@@ -1,5 +1,9 @@
 # SWIFT: SHAP-Weighted Impact Feature Testing
 
+[![PyPI](https://img.shields.io/pypi/v/swift-monitoring)](https://pypi.org/project/swift-monitoring/)
+[![Python](https://img.shields.io/pypi/pyversions/swift-monitoring)](https://pypi.org/project/swift-monitoring/)
+[![License](https://img.shields.io/pypi/l/swift-monitoring)](https://github.com/wlazlod/swift/blob/main/LICENSE)
+
 Model-aware distribution monitoring for production ML systems.
 
 SWIFT detects feature drift by comparing SHAP-transformed distributions between reference and monitoring data. Unlike traditional drift detection that treats features independently of the model, SWIFT weights distribution changes by their impact on model predictions — flagging only the shifts that affect model behavior.
@@ -7,11 +11,21 @@ SWIFT detects feature drift by comparing SHAP-transformed distributions between 
 ## Installation
 
 ```bash
-# From source (editable)
-uv pip install -e ".[dev]"
+pip install swift-monitoring
+```
 
-# With experiment dependencies
-uv pip install -e ".[dev,experiments]"
+Or with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv pip install swift-monitoring
+```
+
+For development (from source):
+
+```bash
+git clone https://github.com/wlazlod/swift.git
+cd swift
+uv pip install -e ".[dev]"
 ```
 
 Requires Python >= 3.11.
