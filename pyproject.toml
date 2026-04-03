@@ -27,6 +27,13 @@ experiments = [
     "ucimlrepo>=0.0.3",
     "tqdm>=4.66",
 ]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.24",
+    "mkdocs-gen-files>=0.5",
+    "mkdocs-literate-nav>=0.6",
+    "mkdocs-section-index>=0.3",
+]
 
 [build-system]
 requires = ["hatchling"]

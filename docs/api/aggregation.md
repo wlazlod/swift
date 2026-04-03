@@ -1,0 +1,3 @@
+# Aggregation
+
+::: swift.aggregation
