@@ -23,3 +23,6 @@ logs/
 
 # Pytest cache
 .pytest_cache/
+
+# MkDocs build output
+site/

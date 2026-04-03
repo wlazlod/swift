@@ -1,0 +1,3 @@
+# SWIFTMonitor
+
+::: swift.pipeline.SWIFTMonitor
