@@ -31,7 +31,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from swift.types import CorrectionMethod, WassersteinOrder
+from swift.types import BucketSet, CorrectionMethod, WassersteinOrder
 from swift.threshold import (
     permutation_test,
     bootstrap_threshold,
@@ -191,10 +191,14 @@ class TestPermutationTest:
         from dataclasses import replace
 
         bs = bucket_sets["x"]
-        new_buckets = []
-        for b in bs.buckets:
-            new_buckets.append(replace(b, mean_shap=float(b.index) * 0.5))
-        bs.buckets = new_buckets
+        new_buckets = tuple(
+            replace(b, mean_shap=float(b.index) * 0.5) for b in bs.buckets
+        )
+        bucket_sets["x"] = BucketSet(
+            feature_name=bs.feature_name,
+            buckets=new_buckets,
+            decision_points=bs.decision_points,
+        )
 
         pvalues = permutation_test(
             X_ref, X_mon, bucket_sets,
@@ -558,10 +562,14 @@ class TestPermutationTestMaxSamples:
         from dataclasses import replace
 
         bs = bucket_sets["x"]
-        new_buckets = []
-        for b in bs.buckets:
-            new_buckets.append(replace(b, mean_shap=float(b.index) * 0.5))
-        bs.buckets = new_buckets
+        new_buckets = tuple(
+            replace(b, mean_shap=float(b.index) * 0.5) for b in bs.buckets
+        )
+        bucket_sets["x"] = BucketSet(
+            feature_name=bs.feature_name,
+            buckets=new_buckets,
+            decision_points=bs.decision_points,
+        )
 
         pvalues = permutation_test(
             X_ref,
@@ -589,10 +597,14 @@ class TestPermutationTestMaxSamples:
         from dataclasses import replace
 
         bs = bucket_sets["x"]
-        new_buckets = []
-        for b in bs.buckets:
-            new_buckets.append(replace(b, mean_shap=float(b.index) * 0.5))
-        bs.buckets = new_buckets
+        new_buckets = tuple(
+            replace(b, mean_shap=float(b.index) * 0.5) for b in bs.buckets
+        )
+        bucket_sets["x"] = BucketSet(
+            feature_name=bs.feature_name,
+            buckets=new_buckets,
+            decision_points=bs.decision_points,
+        )
 
         pvalues = permutation_test(
             X_ref,
