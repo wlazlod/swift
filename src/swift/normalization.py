@@ -18,7 +18,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from swift.types import BucketSet, BucketType
+from swift.types import Bucket, BucketSet, BucketType
 
 logger = logging.getLogger(__name__)
 
@@ -84,8 +84,11 @@ def compute_bucket_shap(
                 )
                 new_buckets.append(replace(bucket, mean_shap=mean_shap))
 
-        bs.buckets = new_buckets
-        result[fname] = bs
+        result[fname] = BucketSet(
+            feature_name=bs.feature_name,
+            buckets=tuple(new_buckets),
+            decision_points=bs.decision_points,
+        )
 
     return result
 
@@ -204,7 +207,7 @@ def _transform_feature_elementwise(
 
 def _make_bucket_mask(
     values: np.ndarray,
-    bucket: object,
+    bucket: Bucket,
 ) -> np.ndarray:
     """Create a boolean mask for observations falling into the given bucket.
 
@@ -252,7 +255,7 @@ def _make_bucket_mask(
 
 
 def _fill_empty_bucket(
-    bucket: object,
+    bucket: Bucket,
     bucket_set: BucketSet,
     feature_name: str,
     feature_idx: int,
@@ -334,7 +337,7 @@ def _fill_empty_bucket(
 
 
 def _sample_value_in_bucket(
-    bucket: object,
+    bucket: Bucket,
     rng: np.random.Generator,
 ) -> float:
     """Sample a representative value inside a numeric bucket.

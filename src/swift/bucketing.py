@@ -92,7 +92,7 @@ def build_buckets(
 
     bucket_set = BucketSet(
         feature_name=feature_name,
-        buckets=buckets,
+        buckets=tuple(buckets),
         decision_points=dp,
     )
 

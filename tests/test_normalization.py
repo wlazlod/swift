@@ -244,11 +244,12 @@ def _set_bucket_shaps(bs: BucketSet, shap_map: dict[int, float]) -> BucketSet:
     """Helper: create a new BucketSet with mean_shap values set."""
     from dataclasses import replace
 
-    new_buckets = []
-    for b in bs.buckets:
-        if b.index in shap_map:
-            new_buckets.append(replace(b, mean_shap=shap_map[b.index]))
-        else:
-            new_buckets.append(b)
-    bs.buckets = new_buckets
-    return bs
+    new_buckets = tuple(
+        replace(b, mean_shap=shap_map[b.index]) if b.index in shap_map else b
+        for b in bs.buckets
+    )
+    return BucketSet(
+        feature_name=bs.feature_name,
+        buckets=new_buckets,
+        decision_points=bs.decision_points,
+    )

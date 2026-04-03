@@ -123,7 +123,7 @@ class Bucket:
         return self.lower <= value < self.upper
 
 
-@dataclass
+@dataclass(frozen=True)
 class BucketSet:
     """Collection of buckets for a single feature.
 
@@ -134,8 +134,10 @@ class BucketSet:
     """
 
     feature_name: str
-    buckets: list[Bucket] = field(default_factory=list)
-    decision_points: np.ndarray = field(default_factory=lambda: np.array([]))
+    buckets: tuple[Bucket, ...] = field(default_factory=tuple)
+    decision_points: np.ndarray = field(
+        default_factory=lambda: np.array([]), hash=False, compare=False
+    )
 
     def assign_bucket(self, value: float | str | None) -> int:
         """Return the index of the bucket that contains the given value.

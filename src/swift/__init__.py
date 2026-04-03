@@ -10,6 +10,8 @@ Usage::
     print(result.drifted_features)
 """
 
+__version__ = "0.1.0"
+
 from swift.aggregation import AggregatedScores
 from swift.pipeline import SWIFTMonitor
 from swift.plotting import plot_bucket_profile, plot_feature_swift_scores
@@ -23,6 +25,7 @@ from swift.types import (
 )
 
 __all__ = [
+    "__version__",
     "AggregatedScores",
     "Bucket",
     "BucketSet",
