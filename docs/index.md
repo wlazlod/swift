@@ -1,5 +1,9 @@
 # SWIFT
 
+<p align="center">
+  <img src="assets/images/swift-logo.svg" alt="SWIFT Logo" width="280">
+</p>
+
 **SHAP-Weighted Impact Feature Testing for Model-Aware Distribution Monitoring**
 
 ---
@@ -30,6 +34,18 @@ monitor.fit(X_ref)
 result = monitor.test(X_mon)
 print(result.drifted_features)
 ```
+
+### Example Output
+
+<figure markdown="span">
+  ![SWIFT Scores — drifted data](assets/images/swift_scores_drifted.png){ width="100%" }
+  <figcaption>SWIFT scores per feature — drifted features highlighted in red</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![Bucket Profile — comparison](assets/images/bucket_profile_comparison.png){ width="100%" }
+  <figcaption>Bucket profile showing SHAP response curve and density shift for a drifted feature</figcaption>
+</figure>
 
 ## The Pipeline at a Glance
 

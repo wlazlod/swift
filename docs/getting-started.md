@@ -100,6 +100,16 @@ fig, ax = monitor.plot_buckets("feature_0")
 fig, ax = monitor.plot_swift_scores(result)
 ```
 
+<figure markdown="span">
+  ![Bucket profile example](assets/images/bucket_profile_single.png){ width="100%" }
+  <figcaption>Bucket profile: SHAP response curve (left axis) and observation density (right axis)</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![SWIFT scores example](assets/images/swift_scores_clean.png){ width="100%" }
+  <figcaption>SWIFT scores overview: no drift detected in clean data</figcaption>
+</figure>
+
 ## What's Next?
 
 - Learn about the [SWIFT Pipeline](user-guide/pipeline.md) in detail

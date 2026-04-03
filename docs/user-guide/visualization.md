@@ -13,6 +13,11 @@ The bucket profile visualizes how a feature's SHAP response and observation dens
 fig, ax = monitor.plot_buckets("feature_0")
 ```
 
+<figure markdown="span">
+  ![Bucket profile — single](../assets/images/bucket_profile_single.png){ width="100%" }
+  <figcaption>Bucket profile with reference density only</figcaption>
+</figure>
+
 The plot shows:
 
 - **Left y-axis**: Mean SHAP value per bucket (line + markers) with a shaded band showing mean +/- 2 standard deviations
@@ -32,6 +37,11 @@ fig, ax = monitor.plot_buckets(
 )
 ```
 
+<figure markdown="span">
+  ![Bucket profile — comparison](../assets/images/bucket_profile_comparison.png){ width="100%" }
+  <figcaption>Reference vs. drifted density comparison — the density shift is clearly visible</figcaption>
+</figure>
+
 ### Custom Density Source
 
 By default, the density is computed from the reference data used during `fit()`. Pass `X` to use a different data source:
@@ -49,6 +59,11 @@ For a more interpretable x-axis, use `x_axis="natural"` to show bucket midpoints
 fig, ax = monitor.plot_buckets("feature_0", x_axis="natural")
 ```
 
+<figure markdown="span">
+  ![Bucket profile — natural x-axis](../assets/images/bucket_profile_natural.png){ width="100%" }
+  <figcaption>Natural x-axis mode — bucket midpoints on the feature-value scale</figcaption>
+</figure>
+
 When there are more than 20 buckets, the default mode automatically switches to compact labels (`B0, B1, ...`) for readability.
 
 ## SWIFT Score Plot
@@ -60,6 +75,11 @@ The SWIFT score plot provides an overview of drift across all features.
 ```python
 fig, ax = monitor.plot_swift_scores(result, threshold=0.01)
 ```
+
+<figure markdown="span">
+  ![SWIFT scores — drifted](../assets/images/swift_scores_drifted.png){ width="100%" }
+  <figcaption>SWIFT scores with drift-colored bars — red indicates drifted features</figcaption>
+</figure>
 
 Shows:
 
@@ -75,6 +95,11 @@ fig, ax = monitor.plot_swift_scores(
     labels=("Clean", "Drifted"),
 )
 ```
+
+<figure markdown="span">
+  ![SWIFT scores — comparison](../assets/images/swift_scores_comparison.png){ width="100%" }
+  <figcaption>Side-by-side comparison of SWIFT scores between clean and drifted data</figcaption>
+</figure>
 
 Shows grouped side-by-side bars with neutral coloring for direct comparison.
 

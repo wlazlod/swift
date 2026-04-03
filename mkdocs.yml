@@ -6,6 +6,8 @@ repo_name: wlazlod/swift
 
 theme:
   name: material
+  logo: assets/images/swift-logo.svg
+  favicon: assets/images/swift-logo.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
